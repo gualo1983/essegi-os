@@ -4,47 +4,56 @@ description: Sistema minimale immutabile ideale per me.
 base-image: ghcr.io/ublue-os/silverblue-main
 image-version: 44
 
-repos:
-  - rpmfusion-free
-  - rpmfusion-nonfree
+modules:
+  # 1. Configurazione Repository RPM Fusion
+  - type: rpmfusion
 
-# Qui definiamo i pacchetti da installare
-packages:
-  - git
-  - podman-compose
-  - rclone
-  - scrcpy
-  - keepassxc
-  - snapper
-  - snapper-rollback
-  - btrfs-progs
-  - nano
-  - neovim
-  - btop
-  - fastfetch
-  - gnome-shell-extension-manager
-  - gnome-tweaks
+  # 2. Installazione Pacchetti (Il tuo Step 1 attuale)
+  - type: dnf
+    install:
+      - git
+      - podman-compose
+      - rclone
+      - scrcpy
+      - keepassxc
+      - snapper
+      - snapper-rollback
+      - btrfs-progs
+      - nano
+      - neovim
+      - btop
+      - fastfetch
+      - gnome-shell-extension-manager
+      - gnome-tweaks
 
-# Qui definiamo i pacchetti da rimuovere
-#remove:
-#  - gnome-maps
-#  - gnome-tour
-#  - orca
-#  - rhythmbox
-#  - totem
-#  - gnome-boxes
-#  - evince
-# pacchetti che forse vorrò togliere
-#  - gnome-weather
-#  - gnome-contacts
-#  - gnome-clocks
-# Qui definiamo i Flatpak
-#flatpaks:
-#  - com.brave.Browser
-#  - com.github.qarmin.czkawka
-#  - io.dbeaver.DBeaverCommunity
-#  - it.mijorus.gearlever
-#  - org.audacityteam.Audacity
-#  - org.signal.Signal
-#  - org.telegram.desktop
-#  - com.vscodium.codium
+  # 3. Rimozione Pacchetti (Commentata per il prossimo commit)
+  # - type: dnf
+  #   remove:
+  #     - gnome-maps
+  #     - gnome-tour
+  #     - orca
+  #     - rhythmbox
+  #     - totem
+  #     - gnome-boxes
+  #     - evince
+  #     - gnome-weather
+  #     - gnome-contacts
+  #     - gnome-clocks
+
+  # 4. Installazione Flatpak (Commentata per il terzo commit)
+  # - type: default-flatpaks
+  #   configurations:
+  #     - notify: true
+  #       scope: system
+  #       install:
+  #         - com.brave.Browser
+  #         - com.github.qarmin.czkawka
+  #         - io.dbeaver.DBeaverCommunity
+  #         - it.mijorus.gearlever
+  #         - org.audacityteam.Audacity
+  #         - org.signal.Signal
+  #         - org.telegram.desktop
+  #         - com.vscodium.codium
+
+  # 5. Modulo di firma (Obbligatorio alla fine)
+  - type: signing
