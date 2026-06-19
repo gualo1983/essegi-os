@@ -23,22 +23,22 @@ modules:
         - gnome-tweaks
 
   # 2. Rimozione Pacchetti (Commentata per il prossimo commit)
-   - type: dnf
-     remove:
-       packages:
-         - gnome-maps
-         - gnome-tour
-         - orca
-         - rhythmbox
-         - totem
-         - gnome-boxes
-         - evince
-  #       - gnome-weather
-  #       - gnome-contacts
-  #       - gnome-clocks
+  - type: dnf
+    remove:
+      packages:
+        - gnome-maps
+        - gnome-tour
+        - orca
+        - rhythmbox
+        - totem
+        - gnome-boxes
+        - evince
+#       - gnome-weather
+#       - gnome-contacts
+#       - gnome-clocks
 
-  # 3. Installazione Flatpak (Commentata per il terzo commit)
-  # - type: default-flatpaks
+ # 3. Installazione Flatpak (Commentata per il terzo commit)
+ # - type: default-flatpaks
   #   configurations:
   #     - notify: true
   #       scope: system
