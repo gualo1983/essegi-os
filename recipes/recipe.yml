@@ -5,42 +5,41 @@ base-image: ghcr.io/ublue-os/silverblue-main
 image-version: 44
 
 modules:
-  # 1. Configurazione Repository RPM Fusion
-  - type: rpmfusion
-
-  # 2. Installazione Pacchetti (Il tuo Step 1 attuale)
+  # 1. Installazione Pacchetti
   - type: dnf
     install:
-      - git
-      - podman-compose
-      - rclone
-      - scrcpy
-      - keepassxc
-      - snapper
-      - snapper-rollback
-      - btrfs-progs
-      - nano
-      - neovim
-      - btop
-      - fastfetch
-      - gnome-shell-extension-manager
-      - gnome-tweaks
+      packages:
+        - git
+        - podman-compose
+        - rclone
+        - scrcpy
+        - keepassxc
+        - snapper
+        - snapper-rollback
+        - btrfs-progs
+        - nano
+        - neovim
+        - btop
+        - fastfetch
+        - gnome-shell-extension-manager
+        - gnome-tweaks
 
-  # 3. Rimozione Pacchetti (Commentata per il prossimo commit)
+  # 2. Rimozione Pacchetti (Commentata per il prossimo commit)
   # - type: dnf
   #   remove:
-  #     - gnome-maps
-  #     - gnome-tour
-  #     - orca
-  #     - rhythmbox
-  #     - totem
-  #     - gnome-boxes
-  #     - evince
-  #     - gnome-weather
-  #     - gnome-contacts
-  #     - gnome-clocks
+  #     packages:
+  #       - gnome-maps
+  #       - gnome-tour
+  #       - orca
+  #       - rhythmbox
+  #       - totem
+  #       - gnome-boxes
+  #       - evince
+  #       - gnome-weather
+  #       - gnome-contacts
+  #       - gnome-clocks
 
-  # 4. Installazione Flatpak (Commentata per il terzo commit)
+  # 3. Installazione Flatpak (Commentata per il terzo commit)
   # - type: default-flatpaks
   #   configurations:
   #     - notify: true
@@ -55,5 +54,5 @@ modules:
   #         - org.telegram.desktop
   #         - com.vscodium.codium
 
-  # 5. Modulo di firma (Obbligatorio alla fine)
+  # 4. Modulo di firma (Obbligatorio alla fine)
   - type: signing
