@@ -23,16 +23,16 @@ modules:
         - gnome-tweaks
 
   # 2. Rimozione Pacchetti (Commentata per il prossimo commit)
-  # - type: dnf
-  #   remove:
-  #     packages:
-  #       - gnome-maps
-  #       - gnome-tour
-  #       - orca
-  #       - rhythmbox
-  #       - totem
-  #       - gnome-boxes
-  #       - evince
+   - type: dnf
+     remove:
+       packages:
+         - gnome-maps
+         - gnome-tour
+         - orca
+         - rhythmbox
+         - totem
+         - gnome-boxes
+         - evince
   #       - gnome-weather
   #       - gnome-contacts
   #       - gnome-clocks
