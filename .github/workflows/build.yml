@@ -40,4 +40,31 @@ jobs:
 
           # enabled by default, disable if your image is small and you want faster builds
           maximize_build_space: true
-          build_iso: true
+
+      - name: Export string outputs
+        id: strings
+        run: |
+          # Questo serve a passare il nome dell'immagine al generatore di ISO
+          echo "image_name=essegi-os" >> $GITHUB_OUTPUT
+
+  # ==== NUOVO JOB DEDICATO PER LA GENERAZIONE DELLA ISO ====
+  iso:
+    name: Generate ISO
+    needs: bluebuild
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate ISO Image
+        uses: blue-build/apps-iso-action@v1
+        with:
+          image_name: ${{ needs.bluebuild.outputs.image_name }}
+          installer_version: "44" # Specifica la versione di Fedora (coerente con la tua ricetta)
+          # Utilizza i dati appena caricati nel tuo registro GitHub personale
+          image_repo: ghcr.io/${{ github.repository_owner }}
+          image_tag: latest
