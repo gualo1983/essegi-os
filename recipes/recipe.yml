@@ -19,7 +19,7 @@ modules:
         - neovim
         - btop
         - fastfetch
-        - extension-manager
+        - gnome-extensions-app
         - gnome-tweaks
 
   # 2. Rimozione Pacchetti (Commentata per il prossimo commit)
