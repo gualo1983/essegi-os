@@ -1,45 +1,50 @@
----
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
-# image will be published to ghcr.io/<user>/<name>
 name: essegi-os
-# description will be included in the image's metadata
-description: This is my personal OS image.
-
-# the base image to build on top of (FROM) and the version tag to use
+description: Sistema minimale immutabile ideale per me.
 base-image: ghcr.io/ublue-os/silverblue-main
-image-version: 42 # latest is also supported if you want new updates ASAP
+image-version: 44
 
-# module configuration, executed in order
-# you can include multiple instances of the same module
-modules:
-  - type: files
-    files:
-      - source: system
-        destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+repos:
+  - rpmfusion-free
+  - rpmfusion-nonfree
 
-  - type: dnf
-    repos:
-      copr:
-        - atim/starship
-    install:
-      packages:
-        - micro
-        - starship
-    remove:
-      packages:
-        # example: removing firefox (in favor of the flatpak)
-        # "firefox" is the main package, "firefox-langpacks" is a dependency
-        - firefox
-        - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+# Qui definiamo i pacchetti da installare
+packages:
+  - git
+  - podman-compose
+  - rclone
+  - scrcpy
+  - keepassxc
+  - snapper
+  - snapper-rollback
+  - btrfs-progs
+  - nano
+  - neovim
+  - btop
+  - fastfetch
+  - gnome-shell-extension-manager
+  - gnome-tweaks
 
-  - type: default-flatpaks
-    configurations:
-      - notify: true # Send notification after install/uninstall is finished (true/false)
-        scope: system
-        # If no repo information is specified, Flathub will be used by default
-        install: # system flatpaks we want all users to have and not remove
-          - org.mozilla.firefox
-          - org.gnome.Loupe
-      - scope: user # Also add Flathub user repo, but no user packages
-
-  - type: signing # this sets up the proper policy & signing files for signed images to work fully
+# Qui definiamo i pacchetti da rimuovere
+#remove:
+#  - gnome-maps
+#  - gnome-tour
+#  - orca
+#  - rhythmbox
+#  - totem
+#  - gnome-boxes
+#  - evince
+# pacchetti che forse vorrò togliere
+#  - gnome-weather
+#  - gnome-contacts
+#  - gnome-clocks
+# Qui definiamo i Flatpak
+#flatpaks:
+#  - com.brave.Browser
+#  - com.github.qarmin.czkawka
+#  - io.dbeaver.DBeaverCommunity
+#  - it.mijorus.gearlever
+#  - org.audacityteam.Audacity
+#  - org.signal.Signal
+#  - org.telegram.desktop
+#  - com.vscodium.codium
