@@ -12,16 +12,14 @@ modules:
         - git
         - podman-compose
         - rclone
-        - scrcpy
         - keepassxc
         - snapper
-        - snapper-rollback
         - btrfs-progs
         - nano
         - neovim
         - btop
         - fastfetch
-        - gnome-shell-extension-manager
+        - extension-manager
         - gnome-tweaks
 
   # 2. Rimozione Pacchetti (Commentata per il prossimo commit)
