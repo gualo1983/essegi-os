@@ -38,19 +38,19 @@ modules:
 #       - gnome-clocks
 
  # 3. Installazione Flatpak (Commentata per il terzo commit)
- # - type: default-flatpaks
-  #   configurations:
-  #     - notify: true
-  #       scope: system
-  #       install:
-  #         - com.brave.Browser
-  #         - com.github.qarmin.czkawka
-  #         - io.dbeaver.DBeaverCommunity
-  #         - it.mijorus.gearlever
-  #         - org.audacityteam.Audacity
-  #         - org.signal.Signal
-  #         - org.telegram.desktop
-  #         - com.vscodium.codium
+ - type: default-flatpaks
+   configurations:
+     - notify: true
+       scope: system
+       install:
+         - com.brave.Browser
+         - com.github.qarmin.czkawka
+         - io.dbeaver.DBeaverCommunity
+         - it.mijorus.gearlever
+         - org.audacityteam.Audacity
+         - org.signal.Signal
+         - org.telegram.desktop
+         - com.vscodium.codium
 
   # 4. Modulo di firma (Obbligatorio alla fine)
   - type: signing
