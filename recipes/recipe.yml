@@ -19,7 +19,6 @@ modules:
         - neovim
         - btop
         - fastfetch
-        - gnome-extensions-app
         - gnome-tweaks
 
   # 2. Rimozione Pacchetti (Commentata per il prossimo commit)
@@ -51,6 +50,7 @@ modules:
           - org.signal.Signal
           - org.telegram.desktop
           - com.vscodium.codium
+          - com.mattjakeman.ExtensionManager
 
   # 4. Modulo di firma (Obbligatorio alla fine)
   - type: signing
