@@ -42,23 +42,25 @@ modules:
 
  # 3. Installazione Flatpak (Commentata per il terzo commit)
   - type: default-flatpaks
-    user:
-      install:
-        - com.brave.Browser
-        - com.github.qarmin.czkawka
-        - io.dbeaver.DBeaverCommunity
-        - it.mijorus.gearlever
-        - org.audacityteam.Audacity
-        - org.signal.Signal
-        - org.telegram.desktop
-        - com.vscodium.codium
-        - com.mattjakeman.ExtensionManager
-        - com.visualstudio.code
+    configurations:
+      - notify: true
+        scope: system
+        install:
+          - com.brave.Browser
+          - com.github.qarmin.czkawka
+          - io.dbeaver.DBeaverCommunity
+          - it.mijorus.gearlever
+          - org.audacityteam.Audacity
+          - org.signal.Signal
+          - org.telegram.desktop
+          - com.vscodium.codium
+          - com.mattjakeman.ExtensionManager
+          - com.visualstudio.code
           
   # 4. Installazione Cie        
-  - type: script
-    scripts:
-      - install-cie.sh
+ # - type: script
+ #   scripts:
+ #     - install-cie.sh
 
 
   # 5. Modulo di firma (Obbligatorio alla fine)
