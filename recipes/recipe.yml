@@ -60,7 +60,7 @@ modules:
   # 4. Installazione Cie        
   - type: script
     snippets:
-      - install-cie.sh
+      - scripts/install-cie.sh
 
 
   # 5. Modulo di firma (Obbligatorio alla fine)
