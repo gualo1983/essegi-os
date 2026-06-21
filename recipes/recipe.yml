@@ -20,9 +20,7 @@ modules:
         - btrfs-progs
         - nano
         - neovim
-        - btop
         - fastfetch
-        - gnome-tweaks
         - scrcpy
         
   # 2. Rimozione Pacchetti (Commentata per il prossimo commit)
@@ -39,8 +37,8 @@ modules:
 #       - gnome-weather
 #       - gnome-contacts
 #       - gnome-clocks
-
- # 3. Installazione Flatpak (Commentata per il terzo commit)
+  
+  # 3. Installazione Flatpak (Commentata per il terzo commit)
   - type: default-flatpaks
     configurations:
       - notify: true
@@ -58,9 +56,9 @@ modules:
           - com.visualstudio.code
           
   # 4. Installazione Cie        
- # - type: script
- #   scripts:
- #     - install-cie.sh
+  - type: script
+    scripts:
+      - install-cie.sh
 
 
   # 5. Modulo di firma (Obbligatorio alla fine)
