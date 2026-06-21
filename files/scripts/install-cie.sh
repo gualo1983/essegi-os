@@ -3,14 +3,15 @@
 # Esci immediatamente se un comando fallisce o trova variabili non dichiarate
 set -oue pipefail
 
-echo "=== Inizio installazione avanzata Middleware CIE ==="
+echo "=== Inizio installazione Middleware CIE con Java di Sistema ==="
 
-# 1. Installazione di Java 17 e dei servizi Smart Card (PC/SC)
-# 2. Aggiunta delle librerie Qt5 necessarie all'interfaccia grafica CIE ID
+# 1. Installazione dell'OpenJDK disponibile su Fedora e dei servizi Smart Card (PC/SC)
+# 2. Aggiunta delle librerie grafiche e crittografiche necessarie
 rpm-ostree install \
     pcsc-lite \
     pcsc-lite-ccid \
-    java-17-openjdk \
+    java-latest-openjdk \
+    java-latest-openjdk-devel \
     qt5-qtsvg \
     openssl
 
