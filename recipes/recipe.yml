@@ -24,7 +24,7 @@ modules:
         - fastfetch
         - gnome-tweaks
         - scrcpy
-
+        
   # 2. Rimozione Pacchetti (Commentata per il prossimo commit)
   - type: dnf
     remove:
@@ -56,6 +56,12 @@ modules:
           - com.vscodium.codium
           - com.mattjakeman.ExtensionManager
           - com.visualstudio.code
+          
+  # 4. Installazione Cie        
+  - type: script
+    snippets:
+      - install-cie.sh
 
-  # 4. Modulo di firma (Obbligatorio alla fine)
+
+  # 5. Modulo di firma (Obbligatorio alla fine)
   - type: signing
