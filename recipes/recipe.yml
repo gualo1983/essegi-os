@@ -7,6 +7,9 @@ image-version: 44
 modules:
   # 1. Installazione Pacchetti
   - type: dnf
+    repos:
+      copr:
+        - zeno/scrcpy 
     install:
       packages:
         - git
@@ -20,6 +23,7 @@ modules:
         - btop
         - fastfetch
         - gnome-tweaks
+        - scrcpy
 
   # 2. Rimozione Pacchetti (Commentata per il prossimo commit)
   - type: dnf
@@ -51,6 +55,7 @@ modules:
           - org.telegram.desktop
           - com.vscodium.codium
           - com.mattjakeman.ExtensionManager
+          - com.visualstudio.code
 
   # 4. Modulo di firma (Obbligatorio alla fine)
   - type: signing
