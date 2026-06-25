@@ -6,9 +6,7 @@ image-version: 44
 
 modules:
   - from-file: modules/rpm.yml
-    source: local
   - from-file: modules/flatpak.yml
-    source: local
   
   - type: script
     scripts:
