@@ -5,14 +5,14 @@ base-image: ghcr.io/ublue-os/silverblue-main
 image-version: 44
 
 modules:
-  - from-file: moduli-segreti/modules/rpm.yml
+  - from-file: modules/rpm.yml
     source: local
-  - from-file: moduli-segreti/modules/flatpak.yml
+  - from-file: modules/flatpak.yml
     source: local
   
   - type: script
     scripts:
-      - moduli-segreti/modules/install-cie.sh
+      - modules/install-cie.sh
 
 
   # 5. Modulo di firma (Obbligatorio alla fine)
