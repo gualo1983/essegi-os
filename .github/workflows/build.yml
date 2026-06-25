@@ -31,7 +31,7 @@ jobs:
     steps:
       # 1. Scarica il codice dal tuo repository PUBBLICO corrente
       - name: Checkout Repo Pubblico
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       # 3. Avvia l'azione ufficiale di Blue-build (Inalterata, ma ora vede la cartella creata sopra)
       - name: Build Custom Image
