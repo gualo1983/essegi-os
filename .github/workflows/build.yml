@@ -39,6 +39,8 @@ jobs:
         with:
           repository: 'gualo1983/essegi-os-segreto' # <-- Inserito il tuo repo reale!
           token: ${{ secrets.TOKEN_REPO_PRIVATO }}
+          sparse-checkout: 'modules'      # Prendi solo la cartella modules del repo privato
+          sparse-checkout-cone-mode: false
           path: 'recipes' # Scarica l'intero repo dentro questa cartella
 
       # 3. Avvia l'azione ufficiale di Blue-build (Inalterata, ma ora vede la cartella creata sopra)
