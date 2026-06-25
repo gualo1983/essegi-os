@@ -33,15 +33,18 @@ jobs:
       - name: Checkout Repo Pubblico
         uses: actions/checkout@v4
 
-      # 2. SCARICA I MODULI DAL REPO PRIVATO (Usa il TOKEN_REPO_PRIVATO creato nei Secrets)
+      # 2. SCARICA I MODULI DAL REPO PRIVATO (In una cartella temporanea pulita)
       - name: Scarica Moduli Privati
         uses: actions/checkout@v4
         with:
-          repository: 'gualo1983/essegi-os-segreto' # <-- Inserito il tuo repo reale!
+          repository: 'gualo1983/essegi-os-segreto'
           token: ${{ secrets.TOKEN_REPO_PRIVATO }}
-          sparse-checkout: 'modules'      # Prendi solo la cartella modules del repo privato
-          sparse-checkout-cone-mode: false
-          path: 'recipes' # Scarica l'intero repo dentro questa cartella
+          path: 'segreti-temp'
+
+      # 3. SPOSTA LA CARTELLA MODULES NELLA POSIZIONE CORRETTA
+      - name: Posiziona i Moduli Segreti
+        run: |
+          mv segreti-temp/modules recipes/modules
 
       # 3. Avvia l'azione ufficiale di Blue-build (Inalterata, ma ora vede la cartella creata sopra)
       - name: Build Custom Image
