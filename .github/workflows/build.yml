@@ -19,7 +19,7 @@ jobs:
     name: Build Custom Image
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write # Cambiato in 'write' per permettere il download incrociato se necessario
       packages: write
       id-token: write
     strategy:
@@ -29,7 +29,19 @@ jobs:
           # !! Add your recipes here
           - recipe.yml
     steps:
-      # the build is fully handled by the reusable github action
+      # 1. Scarica il codice dal tuo repository PUBBLICO corrente
+      - name: Checkout Repo Pubblico
+        uses: actions/checkout@v4
+
+      # 2. SCARICA I MODULI DAL REPO PRIVATO (Usa il TOKEN_REPO_PRIVATO creato nei Secrets)
+      - name: Scarica Moduli Privati
+        uses: actions/checkout@v4
+        with:
+          repository: 'gualo1983/essegi-os-segreto' # <-- Inserito il tuo repo reale!
+          token: ${{ secrets.TOKEN_REPO_PRIVATO }}
+          path: 'moduli-segreti' # Scarica l'intero repo dentro questa cartella
+
+      # 3. Avvia l'azione ufficiale di Blue-build (Inalterata, ma ora vede la cartella creata sopra)
       - name: Build Custom Image
         uses: blue-build/github-action@v1.11
         with:
