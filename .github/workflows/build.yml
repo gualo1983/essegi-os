@@ -40,7 +40,7 @@ jobs:
         with:
           repository: gualo1983/essegi-os-segreto
           token: ${{ secrets.TOKEN_REPO_PRIVATO }} # Il tuo segreto GitHub
-          path: private-data # Nome della cartella di destinazione
+          path: recipes/private-data # Nome della cartella di destinazione
 
       # the build is fully handled by the reusable github action
       - name: Build Custom Image
