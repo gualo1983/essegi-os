@@ -1,20 +1,20 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 name: essegi-os
-description: Sistema minimale immutabile (Configurazione Privata).
+description: Sistema minimale immutabile ideale per me.
 base-image: ghcr.io/ublue-os/silverblue-main
 image-version: 44
 
 modules:
-  # 1 & 2. Installazione e Rimozione Pacchetti (RPM) dal repo privato
+  # 1. Importazione moduli YAML dal repository privato
+  # Percorso relativo alla posizione di questo file (recipe.yml)
   - from-file: private-data/modules/rpm.yml
-
-  # 3. Installazione Flatpak dal repo privato
   - from-file: private-data/modules/flatpak.yml
 
-  # 4. Installazione Cie (Script dal repo privato)
+  # 2. Esecuzione script dal repository privato
+  # Il modulo script richiede il percorso dalla radice del repository pubblico
   - type: script
     scripts:
-      - ../private-data/modules/install-cie.sh
+      - ./recipes/private-data/modules/install-cie.sh
 
-  # 5. Modulo di firma (Obbligatorio alla fine)
+  # 3. Modulo di firma (Obbligatorio alla fine)
   - type: signing
