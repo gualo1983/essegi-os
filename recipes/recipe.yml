@@ -7,14 +7,14 @@ image-version: 44
 modules:
   # 1. Importazione moduli YAML dal repository privato
   # Percorso relativo alla posizione di questo file (recipe.yml)
-  - from-file: modules/modules/rpm.yml
-  - from-file: modules/modules/flatpak.yml
+  - from-file: modules/rpm.yml
+  - from-file: modules/flatpak.yml
 
   # 2. Esecuzione script dal repository privato
   # Il modulo script richiede il percorso dalla radice del repository pubblico
   - type: script
     scripts:
-      - ./modules/modules/install-cie.sh
+      - ././modules/install-cie.sh
 
   # 3. Modulo di firma (Obbligatorio alla fine)
   - type: signing
