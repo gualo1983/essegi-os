@@ -38,7 +38,7 @@ jobs:
       - name: Checkout private repo
         uses: actions/checkout@v4
         with:
-          repository: gualo1983/essegi-os-privato
+          repository: gualo1983/essegi-os-segreto
           token: ${{ secrets.TOKEN_REPO_PRIVATO }} # Il tuo segreto GitHub
           path: private-data # Nome della cartella di destinazione
 
