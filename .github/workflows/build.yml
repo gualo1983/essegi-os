@@ -19,7 +19,7 @@ jobs:
     name: Build Custom Image
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Cambiato in 'write' per permettere il download incrociato se necessario
+      contents: read
       packages: write
       id-token: write
     strategy:
@@ -29,11 +29,7 @@ jobs:
           # !! Add your recipes here
           - recipe.yml
     steps:
-      # 1. Scarica il codice dal tuo repository PUBBLICO corrente
-      - name: Checkout Repo Pubblico
-        uses: actions/checkout@v4
-
-      # 3. Avvia l'azione ufficiale di Blue-build (Inalterata, ma ora vede la cartella creata sopra)
+      # the build is fully handled by the reusable github action
       - name: Build Custom Image
         uses: blue-build/github-action@v1.11
         with:
