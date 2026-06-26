@@ -1,66 +1,20 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 name: essegi-os
-description: Sistema minimale immutabile ideale per me.
+description: Sistema minimale immutabile (Configurazione Privata).
 base-image: ghcr.io/ublue-os/silverblue-main
 image-version: 44
 
 modules:
-  # 1. Installazione Pacchetti
-  - type: dnf
-    repos:
-      copr:
-        - zeno/scrcpy 
-    install:
-      packages:
-        - git
-        - podman-compose
-        - rclone
-        - keepassxc
-        - snapper
-        - btrfs-progs
-        - nano
-        - neovim
-        - fastfetch
-        - scrcpy
-        
-  # 2. Rimozione Pacchetti (Commentata per il prossimo commit)
-  - type: dnf
-    remove:
-      packages:
-        - gnome-maps
-        - gnome-tour
-        - orca
-        - rhythmbox
-        - totem
-        - gnome-boxes
-        - evince
-#       - gnome-weather
-#       - gnome-contacts
-#       - gnome-clocks
-  
-  # 3. Installazione Flatpak (Commentata per il terzo commit)
-  - type: default-flatpaks
-    configurations:
-      - notify: true
-        scope: system
-        install:
-          - com.brave.Browser
-          - com.github.qarmin.czkawka
-          - io.dbeaver.DBeaverCommunity
-          - it.mijorus.gearlever
-          - org.audacityteam.Audacity
-          - org.signal.Signal
-          - org.telegram.desktop
-          - com.vscodium.codium
-          - com.mattjakeman.ExtensionManager
-#          - com.visualstudio.code
-          - io.freetubeapp.FreeTube
-          
-  # 4. Installazione Cie
+  # 1 & 2. Installazione e Rimozione Pacchetti (RPM) dal repo privato
+  - from-file: private-data/modules/rpm.yml
+
+  # 3. Installazione Flatpak dal repo privato
+  - from-file: private-data/modules/flatpak.yml
+
+  # 4. Installazione Cie (Script dal repo privato)
   - type: script
     scripts:
-      - install-cie.sh
-
+      - ../private-data/modules/install-cie.sh
 
   # 5. Modulo di firma (Obbligatorio alla fine)
   - type: signing
