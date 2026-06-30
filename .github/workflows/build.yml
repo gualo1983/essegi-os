@@ -29,6 +29,22 @@ jobs:
           # !! Add your recipes here
           - recipe.yml
     steps:
+      - name: Checkout public repo
+        uses: actions/checkout@v4
+
+      - name: Clone private modules repo
+        run: |
+          git clone https://$TOKEN_REPO_PRIVATO@github.com/gualo1983/essegi-os-segreto.git private
+        env:
+          TOKEN_REPO_PRIVATO: ${{ secrets.TOKEN_REPO_PRIVATO }}
+
+      - name: Copy private modules into build tree
+        run: |
+          mkdir -p modules
+          cp private/modules/rpm.yml modules/rpm.yml
+          cp private/modules/flatpak.yml modules/flatpak.yml
+          cp private/modules/install-cie.sh modules/install-cie.sh
+          
       # the build is fully handled by the reusable github action
       - name: Build Custom Image
         uses: blue-build/github-action@v1.11
