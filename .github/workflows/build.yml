@@ -41,11 +41,12 @@ jobs:
       - name: Inject private recipe and script
         run: |
           # Sovrascrive la recipe pubblica con quella privata
-          cp private/recipe.yml recipes/recipe.yml
+          cp private/modules/recipe.yml recipes/recipe.yml
 
           # Copia lo script CIE nella cartella corretta
           mkdir -p files/scripts
           cp private/modules/install-cie.sh files/scripts/install-cie.sh
+
           
       # the build is fully handled by the reusable github action
       - name: Build Custom Image
