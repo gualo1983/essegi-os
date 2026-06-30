@@ -5,29 +5,17 @@ base-image: ghcr.io/ublue-os/silverblue-main
 image-version: 44
 
 modules:
-  # 1. Moduli privati (scaricati dal repo segreto)
   - source: local
+    type: module-pack
     path: modules/rpm.yml
 
   - source: local
+    type: module-pack
     path: modules/flatpak.yml
 
   - source: local
-    path: modules/install-cie.sh
+    type: script
+    scripts:
+      - modules/install-cie.sh
 
-  # 2. Modulo di firma (Obbligatorio alla fine)
-  - type: signing
-# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
-name: essegi-os
-description: Sistema minimale immutabile ideale per me.
-base-image: ghcr.io/ublue-os/silverblue-main
-image-version: 44
-
-modules:
-  # 1. Moduli privati (scaricati dal repo segreto)
-  - modules/rpm.yml
-  - modules/flatpak.yml
-  - modules/install-cie.sh
-
-  # 2. Modulo di firma (Obbligatorio alla fine)
   - type: signing
