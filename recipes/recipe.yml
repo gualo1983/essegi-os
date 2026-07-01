@@ -6,5 +6,6 @@ image-version: 44
 
 modules:
   - from-file: modules/private.yml
+    source: local
 
   - type: signing
