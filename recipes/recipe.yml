@@ -5,7 +5,9 @@ base-image: ghcr.io/ublue-os/silverblue-main
 image-version: 44
 
 modules:
-  - from-file: modules/private.yml
+  - type: from-file
+    path: modules/private.yml
     source: local
+
 
   - type: signing
