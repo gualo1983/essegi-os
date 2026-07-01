@@ -1,8 +1,10 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 name: essegi-os
-description: Sistema minimale immutabile ideale per me.
+description: Sistema minimale immutabile ottimizzato.
 base-image: ghcr.io/ublue-os/silverblue-main
 image-version: 44
 
 modules:
+  - from-file: modules/private.yml
+
   - type: signing
