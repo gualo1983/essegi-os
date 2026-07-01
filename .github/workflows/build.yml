@@ -1,8 +1,8 @@
 name: bluebuild
-
 on:
   schedule:
-    - cron: "42 07 * * *"
+    - cron:
+        "42 07 * * *"
   push:
     paths-ignore:
       - "**.md"
@@ -34,14 +34,17 @@ jobs:
 
       - name: Inject private recipe and script
         run: |
+          # Sovrascrive la recipe pubblica con quella privata
           cp private/modules/recipe.yml recipes/recipe.yml
+
+          # Copia lo script CIE nella cartella corretta
           mkdir -p files/scripts
           cp private/modules/install-cie.sh files/scripts/install-cie.sh
 
       - name: Build Custom Image
         uses: blue-build/github-action@v1.11
         with:
-          recipe: recipes/recipe.yml
+          recipe: recipe.yml          # ← IMPORTANTE: torna a recipe.yml
           cosign_private_key: ${{ secrets.SIGNING_SECRET }}
           registry_token: ${{ github.token }}
           pr_event_number: ${{ github.event.number }}
