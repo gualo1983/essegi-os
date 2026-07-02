@@ -12,7 +12,6 @@ modules:
         - zeno/scrcpy 
     install:
       packages:
-        - intel-microcode
         - git
         - podman-compose
         - rclone
@@ -62,33 +61,5 @@ modules:
     scripts:
       - install-cie.sh
 
-
   # 5. Modulo di firma (Obbligatorio alla fine)
   - type: signing
-
-  
-#  - type: systemd
-#    system:
-#      - path: /etc/systemd/system.conf.d/optimizations.conf
-#        content: |
-#          [Manager]
-#          DefaultTimeoutStartSec=15s
-#          DefaultTimeoutStopSec=15s
-#          DefaultCPUAccounting=yes
-#          DefaultMemoryAccounting=yes
-#          DefaultTasksAccounting=yes
-
-#      - path: /etc/systemd/journald.conf.d/optimizations.conf
-#        content: |
-#          [Journal]
-#          SystemMaxUse=200M
-#          RuntimeMaxUse=50M
-
-#  - type: ostree
-#    compression: lz4
-
-# - type: cleanup
-#   remove:
-#     - /usr/share/doc/*
-#     - /usr/share/man/*
-#     - /usr/share/locale/*
