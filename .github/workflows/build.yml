@@ -48,7 +48,7 @@ jobs:
 
           # COPIA RECIPE-PRIVATA        
           mkdir -p private
-          cp private_repo/recipe.yml private/recipe.yml
+          cp private/modules/recipe.yml private/recipe.yml
 
           # COPIA LO SCRIPT CIE
           mkdir -p files/scripts
