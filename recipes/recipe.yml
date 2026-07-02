@@ -6,8 +6,31 @@ image-version: 44
 
 modules:
   - type: from-file
-    path: modules/private.yml
+    path: modules/10-systemd.yml
     source: local
 
+  - type: from-file
+    path: modules/20-ostree.yml
+    source: local
+
+  - type: from-file
+    path: modules/30-dnf-install.yml
+    source: local
+
+  - type: from-file
+    path: modules/40-dnf-remove.yml
+    source: local
+
+  - type: from-file
+    path: modules/50-flatpaks.yml
+    source: local
+
+  - type: from-file
+    path: modules/60-cleanup.yml
+    source: local
+
+  - type: from-file
+    path: modules/70-script.yml
+    source: local
 
   - type: signing
