@@ -38,12 +38,11 @@ jobs:
         env:
           TOKEN_REPO_PRIVATO: ${{ secrets.TOKEN_REPO_PRIVATO }}
 
-      - name: Inject private recipe and script
+      - name: Inject private modules and script
         run: |
-          # Sovrascrive la recipe pubblica con quella privata
-          cp private/modules/recipe.yml modules/private.yml
-          cp private/modules/install-cie.sh files/scripts/install-cie.sh
-
+          cp private/modules/*.yml recipes/modules/
+          mkdir -p files/scripts
+          cp private/scripts/install-cie.sh files/scripts/install-cie.sh
           
       # the build is fully handled by the reusable github action
       - name: Build Custom Image
