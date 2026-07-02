@@ -48,7 +48,7 @@ jobs:
 
           # COPIA LO SCRIPT CIE
           mkdir -p files/scripts
-          cp private/scripts/install-cie.sh files/scripts/install-cie.sh
+          cp private/modules/install-cie.sh files/scripts/install-cie.sh
 
       - name: Build Custom Image
         uses: blue-build/github-action@v1.11
