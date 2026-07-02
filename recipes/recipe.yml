@@ -5,6 +5,8 @@ base-image: ghcr.io/ublue-os/silverblue-main
 image-version: 44
 
 modules:
+  - type: ostree
+    compression: lz4
   # 1. Installazione Pacchetti
   - type: dnf
     repos:
@@ -12,6 +14,7 @@ modules:
         - zeno/scrcpy 
     install:
       packages:
+        - intel-microcode
         - git
         - podman-compose
         - rclone
