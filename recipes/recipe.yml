@@ -4,9 +4,80 @@ description: Sistema minimale immutabile ottimizzato.
 base-image: ghcr.io/ublue-os/silverblue-main
 image-version: 44
 
-import:
-  - path: private/recipe.yml
-    source: local
-
 modules:
+  - type: systemd
+    system:
+      - path: /etc/systemd/system.conf.d/optimizations.conf
+        content: |
+          [Manager]
+          DefaultTimeoutStartSec=15s
+          DefaultTimeoutStopSec=15s
+          DefaultCPUAccounting=yes
+          DefaultMemoryAccounting=yes
+          DefaultTasksAccounting=yes
+
+      - path: /etc/systemd/journald.conf.d/optimizations.conf
+        content: |
+          [Journal]
+          SystemMaxUse=200M
+          RuntimeMaxUse=50M
+
+  - type: ostree
+    compression: lz4
+
+  - type: dnf
+    repos:
+      copr:
+        - zeno/scrcpy
+    install:
+      packages:
+        - intel-microcode
+        - git
+        - podman-compose
+        - rclone
+        - keepassxc
+        - snapper
+        - btrfs-progs
+        - nano
+        - neovim
+        - fastfetch
+        - scrcpy
+
+  - type: dnf
+    remove:
+      packages:
+        - gnome-maps
+        - gnome-tour
+        - orca
+        - rhythmbox
+        - totem
+        - gnome-boxes
+        - evince
+
+  - type: default-flatpaks
+    configurations:
+      - notify: true
+        scope: system
+        install:
+          - com.brave.Browser
+          - com.github.qarmin.czkawka
+          - io.dbeaver.DBeaverCommunity
+          - it.mijorus.gearlever
+          - org.audacityteam.Audacity
+          - org.signal.Signal
+          - org.telegram.desktop
+          - com.vscodium.codium
+          - com.mattjakeman.ExtensionManager
+          - io.freetubeapp.FreeTube
+
+  - type: cleanup
+    remove:
+      - /usr/share/doc/*
+      - /usr/share/man/*
+      - /usr/share/locale/*
+
+  - type: script
+    scripts:
+      - files/scripts/install-cie.sh
+
   - type: signing
