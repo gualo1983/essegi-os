@@ -41,10 +41,14 @@ jobs:
       - name: Inject private modules and script
         run: |
           # CREA LA CARTELLA CHE MANCAVA
-          mkdir -p modules
+          # mkdir -p modules
 
           # COPIA TUTTI I MODULI PRIVATI
-          cp private/modules/*.yml modules/
+          # cp private/modules/*.yml modules/
+
+          # COPIA RECIPE-PRIVATA        
+          mkdir -p private
+          cp private_repo/recipe.yml private/recipe.yml
 
           # COPIA LO SCRIPT CIE
           mkdir -p files/scripts
