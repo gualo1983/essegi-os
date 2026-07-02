@@ -5,25 +5,25 @@ base-image: ghcr.io/ublue-os/silverblue-main
 image-version: 44
 
 modules:
-  - type: systemd
-    system:
-      - path: /etc/systemd/system.conf.d/optimizations.conf
-        content: |
-          [Manager]
-          DefaultTimeoutStartSec=15s
-          DefaultTimeoutStopSec=15s
-          DefaultCPUAccounting=yes
-          DefaultMemoryAccounting=yes
-          DefaultTasksAccounting=yes
+#  - type: systemd
+#    system:
+#      - path: /etc/systemd/system.conf.d/optimizations.conf
+#        content: |
+#          [Manager]
+#          DefaultTimeoutStartSec=15s
+#          DefaultTimeoutStopSec=15s
+#          DefaultCPUAccounting=yes
+#          DefaultMemoryAccounting=yes
+#          DefaultTasksAccounting=yes
 
-      - path: /etc/systemd/journald.conf.d/optimizations.conf
-        content: |
-          [Journal]
-          SystemMaxUse=200M
-          RuntimeMaxUse=50M
+#      - path: /etc/systemd/journald.conf.d/optimizations.conf
+#        content: |
+#          [Journal]
+#          SystemMaxUse=200M
+#          RuntimeMaxUse=50M
 
-  - type: ostree
-    compression: lz4
+#  - type: ostree
+#    compression: lz4
 
   - type: dnf
     repos:
@@ -70,11 +70,11 @@ modules:
           - com.mattjakeman.ExtensionManager
           - io.freetubeapp.FreeTube
 
-  - type: cleanup
-    remove:
-      - /usr/share/doc/*
-      - /usr/share/man/*
-      - /usr/share/locale/*
+ # - type: cleanup
+ #   remove:
+ #     - /usr/share/doc/*
+ #     - /usr/share/man/*
+ #     - /usr/share/locale/*
 
   - type: script
     scripts:
