@@ -4,33 +4,9 @@ description: Sistema minimale immutabile ottimizzato.
 base-image: ghcr.io/ublue-os/silverblue-main
 image-version: 44
 
+import:
+  - path: private/recipe.yml
+    source: local
+
 modules:
-  - type: from-file
-    path: modules/10-systemd.yml
-    source: local
-
-  - type: from-file
-    path: modules/20-ostree.yml
-    source: local
-
-  - type: from-file
-    path: modules/30-dnf-install.yml
-    source: local
-
-  - type: from-file
-    path: modules/40-dnf-remove.yml
-    source: local
-
-  - type: from-file
-    path: modules/50-flatpaks.yml
-    source: local
-
-  - type: from-file
-    path: modules/60-cleanup.yml
-    source: local
-
-  - type: from-file
-    path: modules/70-script.yml
-    source: local
-
   - type: signing
